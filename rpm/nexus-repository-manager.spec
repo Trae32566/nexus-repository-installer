@@ -4,7 +4,7 @@ Release:	%%RELEASE%%
 Summary:	Nexus Repository Manager 3
 License:	Proprietary
 Requires:       systemd
-Requires:       java-17-openjdk-headless
+Requires:       java-latest-openjdk-headless
 URL:		https://www.sonatype.com
 Source0:	%%BUNDLE_FILE%%
 Source1:        %{name}-%{version}-rpm-extra.tar.gz
