@@ -40,7 +40,7 @@ rsync -a ${RPM_PACKAGE_NAME}-${RPM_PACKAGE_VERSION}/extra %{buildroot}/opt/sonat
 rsync -a ${RPM_PACKAGE_NAME}-${RPM_PACKAGE_VERSION}/sonatype-work/nexus3/ %{buildroot}/opt/sonatype/sonatype-work/nexus3
 
 #patch config
-perl -p -i -e 's/#run_as_user=""/run_as_user="nexus3"/' %{buildroot}/opt/sonatype/nexus3/bin/nexus.rc
+echo 'run_as_user="nexus3"' > %{buildroot}/opt/sonatype/nexus3/bin/nexus.rc
 perl -p -i -e 's/\.\.\/sonatype-work/\/opt\/sonatype\/sonatype-work/g' %{buildroot}/opt/sonatype/nexus3/bin/nexus.vmoptions
 
 mkdir -p %{buildroot}/etc/systemd/system

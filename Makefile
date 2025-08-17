@@ -9,16 +9,15 @@ VERSION ?= $(shell cat version-to-build.txt)
 
 # the name of the original bundle file
 #BUNDLE_FILE := $(APP)-$(VERSION)-unix.tar.gz
-BUNDLE_FILE := nexus-$(VERSION)-unix.tar.gz
+BUNDLE_FILE := nexus-$(VERSION)-linux-$(shell uname -m).tar.gz
 
-FETCH_URL ?= "http://download.sonatype.com/nexus/3/$(BUNDLE_FILE)"
-
+FETCH_URL ?= "https://download.sonatype.com/nexus/3/$(BUNDLE_FILE)"
 # skip download and use local build/$(BUNDLE_FILE)
 # save bandwidth if you have build/* artifacts present, or workaround
 # upstream connectivity issues.
 SKIP_FETCH ?= false
 
-RHEL_VERSION ?= 7
+RHEL_VERSION ?= $(/usr/bin/distro --json | jq '.version_parts["major"]')
 # The release of the RPM package
 PKG_RELEASE ?= 1.el$(RHEL_VERSION)
 
